@@ -90,8 +90,43 @@ let populateVars = () => {
 
 let solve = (kVars) => {
   //console.log(kVars)
+  //since there are 5 variables and three choices, there are 10 possible combinations
+  //of known variables to account for. That's (5 choose 3) by the way. Thus, there
+  //are 10 routes the code below might take. Don't get lost in the if tree.
 
-  
+  if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.x !== "z") {
+    console.log("Case 1")
+  }
+  else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.t !== "z") {
+    console.log("Case 2")
+  }
+  else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.a !== "z") {
+    console.log("Case 3")
+  }
+  else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.t !== "z") {
+    console.log("Case 4")
+  }
+  else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.a !== "z") {
+    console.log("Case 5")
+  }
+  else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
+    console.log("Case 6")
+  }
+  else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.t !== "z") {
+    console.log("Case 7")
+  }
+  else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.a !== "z") {
+    console.log("Case 8")
+  }
+  else if (kVars.vf !== "z" && kVars.t !== "z" && kVars.a !== "z") {
+    console.log("Case 9")
+  }
+  else if (kVars.x !== "z" && kVars.t !== "z" && kVars.a !== "z") {
+    console.log("Case 10")
+  }
+  else {
+    console.log("Error 01, report bug to developer.")
+  }
 }
 
 background();
