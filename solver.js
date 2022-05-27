@@ -90,10 +90,16 @@ let populateVars = () => {
 
 let solve = (kVars) => {
   //console.log(kVars)
+  //First, sanitize the input.
+  for (let i in kVars) {
+    if (kVars[i] !== "z") {
+      kVars[i] = Number(kVars[i])
+    }
+  }
+
   //since there are 5 variables and three choices, there are 10 possible combinations
   //of known variables to account for. That's (5 choose 3) by the way. Thus, there
   //are 10 routes the code below might take. Don't get lost in the if tree.
-
   if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.x !== "z") {
     //console.log("Case 1")
     kVars.a = (kVars.vf ** 2 - kVars.vi ** 2) / (2 * kVars.x);
@@ -120,6 +126,7 @@ let solve = (kVars) => {
     kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
   }
   else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
+    //TODO
     kVars.vf = kVars.vi + kVars.a * kVars.t;
     kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
   }
