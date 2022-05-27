@@ -120,13 +120,19 @@ let solve = (kVars) => {
     kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
   }
   else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 6 has not been implemented yet.")
+    kVars.vf = kVars.vi + kVars.a * kVars.t;
+    kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
   }
   else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.t !== "z") {
-    console.log("Case 7 has not been implemented yet.")
+    kVars.vi = kVars.x / kVars.t * 2 - kVars.vf;
+    kVars.a = (kVars.vf ** 2 - kVars.vi ** 2) / (2 * kVars.x);
   }
   else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.a !== "z") {
-    console.log("Case 8 has not been implemented yet.")
+    let t1 = (-1 * kVars.vf + Math.sqrt(kVars.vf ** 2 - (4 * 0.5 * kVars.a * kVars.x))) / (2 * -0.5 * kVars.a);
+    let t2 = (-1 * kVars.vf + Math.sqrt(kVars.vf ** 2 - (4 * 0.5 * kVars.a * kVars.x))) / (2 * -0.5 * kVars.a);
+    if (t1 > t2) { kVars.t = t1 }
+    else { kVars.t = t2 }
+    kVars.vi = kVars.x / kVars.t * 2 - kVars.vf;
   }
   else if (kVars.vf !== "z" && kVars.t !== "z" && kVars.a !== "z") {
     console.log("Case 9 has not been implemented yet.")
@@ -138,6 +144,14 @@ let solve = (kVars) => {
     console.log("Error 01, report bug to developer.")
   }
 
+  //Purge nonphysical results
+  for (let i in kVars) {
+    if (isNaN(kVars[i])) {
+      kVars[i] = "No physical solution with given parameters."
+    }
+  }
+
+  //Report final answer
   console.log("The final solution set is:");
   for (let i in kVars) {
     console.log(i + ": " + kVars[i])
