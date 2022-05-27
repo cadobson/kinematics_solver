@@ -135,10 +135,12 @@ let solve = (kVars) => {
     kVars.vi = kVars.x / kVars.t * 2 - kVars.vf;
   }
   else if (kVars.vf !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 9 has not been implemented yet.")
+    kVars.vi = kVars.vf - kVars.a * kVars.t;
+    kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
   }
   else if (kVars.x !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 10 has not been implemented yet.")
+    kVars.vi = (kVars.x - 0.5 * kVars.a * (kVars.t ** 2)) / kVars.t;
+    kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
   }
   else {
     console.log("Error 01, report bug to developer.")
