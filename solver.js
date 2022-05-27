@@ -95,37 +95,44 @@ let solve = (kVars) => {
   //are 10 routes the code below might take. Don't get lost in the if tree.
 
   if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.x !== "z") {
-    console.log("Case 1")
+    //console.log("Case 1")
+    kVars.a = (kVars.vf ** 2 - kVars.vi ** 2) / (2 * kVars.x);
+    kVars.t = (kVars.vf - kVars.vi) / kVars.a;
   }
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.t !== "z") {
-    console.log("Case 2")
+    console.log("Case 2 has not been implemented yet.")
   }
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.a !== "z") {
-    console.log("Case 3")
+    console.log("Case 3 has not been implemented yet.")
   }
   else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.t !== "z") {
-    console.log("Case 4")
+    console.log("Case 4 has not been implemented yet.")
   }
   else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.a !== "z") {
-    console.log("Case 5")
+    console.log("Case 5 has not been implemented yet.")
   }
   else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 6")
+    console.log("Case 6 has not been implemented yet.")
   }
   else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.t !== "z") {
-    console.log("Case 7")
+    console.log("Case 7 has not been implemented yet.")
   }
   else if (kVars.vf !== "z" && kVars.x !== "z" && kVars.a !== "z") {
-    console.log("Case 8")
+    console.log("Case 8 has not been implemented yet.")
   }
   else if (kVars.vf !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 9")
+    console.log("Case 9 has not been implemented yet.")
   }
   else if (kVars.x !== "z" && kVars.t !== "z" && kVars.a !== "z") {
-    console.log("Case 10")
+    console.log("Case 10 has not been implemented yet.")
   }
   else {
     console.log("Error 01, report bug to developer.")
+  }
+
+  console.log("The final solution set is:");
+  for (let i in kVars) {
+    console.log(i + ": " + kVars[i])
   }
 }
 
