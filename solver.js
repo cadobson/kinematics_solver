@@ -51,7 +51,7 @@ let populateVars = () => {
         else {
           rl.question("Enter time of duration: ", (t) => {
             vars.t = t;
-            if (t !== "x") {
+            if (t !== "z") {
               knownVars++;
             }
             if (knownVars === 3) {
@@ -61,7 +61,7 @@ let populateVars = () => {
             else {
               rl.question("Enter acceleration: ", (a) => {
                 vars.a = a;
-                if (a !== "x") {
+                if (a !== "z") {
                   knownVars++;
                 }
                 if (knownVars === 3) {
@@ -100,16 +100,24 @@ let solve = (kVars) => {
     kVars.t = (kVars.vf - kVars.vi) / kVars.a;
   }
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.t !== "z") {
-    console.log("Case 2 has not been implemented yet.")
+    kVars.a = (kVars.vf - kVars.vi) / kVars.t;
+    kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
   }
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.a !== "z") {
-    console.log("Case 3 has not been implemented yet.")
+    kVars.t = (kVars.vf - kVars.vi) / kVars.a;
+    kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
   }
   else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.t !== "z") {
-    console.log("Case 4 has not been implemented yet.")
+    kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
+    kVars.a = (kVars.vf ** 2 - kVars.vi ** 2) / (2 * kVars.x);
   }
   else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.a !== "z") {
-    console.log("Case 5 has not been implemented yet.")
+    //This is just the quadratic equation, choose the positive solution
+    let t1 = (-1 * kVars.vi + Math.sqrt(kVars.vi ** 2 + (4 * 0.5 * kVars.a * kVars.x))) / (2 * 0.5 * kVars.a);
+    let t2 = (-1 * kVars.vi + Math.sqrt(kVars.vi ** 2 + (4 * 0.5 * kVars.a * kVars.x))) / (2 * 0.5 * kVars.a);
+    if (t1 > t2) { kVars.t = t1 }
+    else { kVars.t = t2 }
+    kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
   }
   else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
     console.log("Case 6 has not been implemented yet.")
