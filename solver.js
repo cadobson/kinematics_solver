@@ -88,6 +88,11 @@ let populateVars = () => {
   //rl.close();
 }
 
+/**
+ * Given a set of three know kinematic variable and two unknown kinematic variables,
+ * solve for the remaining kinematic variables.
+ * @param {Kinematic Variable Object} kVars
+ */
 let solve = (kVars) => {
   //console.log(kVars)
   //First, sanitize the input.
@@ -104,6 +109,10 @@ let solve = (kVars) => {
     //console.log("Case 1")
     kVars.a = (kVars.vf ** 2 - kVars.vi ** 2) / (2 * kVars.x);
     kVars.t = (kVars.vf - kVars.vi) / kVars.a;
+    if (kVars.t < 0) {
+      kVars.a = "No physical solution with given parameters.";
+      kVars.t = "No physical solution with given parameters.";
+    }
   }
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.t !== "z") {
     kVars.a = (kVars.vf - kVars.vi) / kVars.t;
@@ -112,6 +121,10 @@ let solve = (kVars) => {
   else if (kVars.vi !== "z" && kVars.vf !== "z" && kVars.a !== "z") {
     kVars.t = (kVars.vf - kVars.vi) / kVars.a;
     kVars.x = (kVars.vi + kVars.vf) * kVars.t / 2;
+    if (kVars.t < 0) {
+      kVars.x = "No physical solution with given parameters.";
+      kVars.t = "No physical solution with given parameters.";
+    }
   }
   else if (kVars.vi !== "z" && kVars.x !== "z" && kVars.t !== "z") {
     kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
@@ -124,6 +137,10 @@ let solve = (kVars) => {
     if (t1 > t2) { kVars.t = t1 }
     else { kVars.t = t2 }
     kVars.vf = kVars.x / kVars.t * 2 - kVars.vi;
+    if (kVars.t < 0) {
+      kVars.vf = "No physical solution with given parameters.";
+      kVars.t = "No physical solution with given parameters.";
+    }
   }
   else if (kVars.vi !== "z" && kVars.t !== "z" && kVars.a !== "z") {
     //TODO
@@ -140,6 +157,10 @@ let solve = (kVars) => {
     if (t1 > t2) { kVars.t = t1 }
     else { kVars.t = t2 }
     kVars.vi = kVars.x / kVars.t * 2 - kVars.vf;
+    if (kVars.t < 0) {
+      kVars.vi = "No physical solution with given parameters.";
+      kVars.t = "No physical solution with given parameters.";
+    }
   }
   else if (kVars.vf !== "z" && kVars.t !== "z" && kVars.a !== "z") {
     kVars.vi = kVars.vf - kVars.a * kVars.t;
@@ -165,6 +186,10 @@ let solve = (kVars) => {
   for (let i in kVars) {
     console.log(i + ": " + kVars[i])
   }
+}
+
+let plotData = function (kVars) {
+
 }
 
 background();
