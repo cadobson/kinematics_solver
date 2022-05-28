@@ -188,9 +188,6 @@ let solve = (kVars) => {
   }
 }
 
-let plotData = function (kVars) {
-
-}
 
 background();
 populateVars();
